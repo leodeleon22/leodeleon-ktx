@@ -23,7 +23,20 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
+
+kapt {
+    useBuildCache = true
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 //To see which deps need to update run: ./gradlew dependencyUpdates -Drevision=release
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
@@ -42,7 +55,9 @@ dependencies {
     implementation(Deps.Utils.bindingAdapter)
     implementation(Deps.Utils.bindingRecycler)
     kapt(Deps.Kapt.lifecycle)
-    testImplementation(Deps.Test.junit)
+    kapt(Deps.Kapt.databinding)
+    testImplementation(Deps.Test.kotest)
+    testImplementation(Deps.Test.kotestAssert)
     androidTestImplementation(Deps.Test.runner)
     androidTestImplementation(Deps.Test.espresso)
 }
