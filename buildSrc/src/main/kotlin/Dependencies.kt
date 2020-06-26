@@ -3,6 +3,7 @@ object BuildVersions {
     const val min_sdk = 21
     const val target_sdk = 29
     const val android_plugin = "3.6.1"
+    const val build_version = "29.0.2"
 }
 
 object Release {
@@ -18,6 +19,7 @@ object Classpath {
 
 object Plugins {
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinKapt = "kotlin-kapt"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
@@ -42,6 +44,11 @@ object Deps {
         const val navigationUI = "androidx.navigation:navigation-ui-ktx:$NAVIGATION"
     }
 
+    object Kotlin {
+        val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildVersions.kotlin}"
+        val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5"
+    }
+
     object Google {
         const val material = "com.google.android.material:material:1.2.0-alpha02"
     }
@@ -56,9 +63,16 @@ object Deps {
 
     object Utils {
         private const val ADAPTER = "4.0.0"
+
         const val threeten = "com.jakewharton.threetenabp:threetenabp:1.2.3"
         const val bindingAdapter = "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$ADAPTER"
         const val bindingRecycler = "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$ADAPTER"
+    }
+
+    object FlowBinding {
+        private const val VERSION = "0.10.2"
+        const val android = "io.github.reactivecircus.flowbinding:flowbinding-android:$VERSION"
+        const val core = "io.github.reactivecircus.flowbinding:flowbinding-core:$VERSION"
     }
 
     object Splits {
